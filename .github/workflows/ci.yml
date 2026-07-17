@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    name: Ruff y Pytest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v7
+
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b
+        with:
+          version: "0.11.29"
+
+      - name: Instalar Python
+        run: uv python install
+
+      - name: Instalar dependencias
+        run: uv sync --all-groups --locked
+
+      - name: Revisar calidad con Ruff
+        run: uv run ruff check .
+
+      - name: Revisar formato con Ruff
+        run: uv run ruff format --check .
+
+      - name: Ejecutar pruebas
+        run: uv run pytest
