@@ -3,7 +3,7 @@
 import pandas as pd
 import pytest
 
-from analytics.extract import cargar_csv
+from analytics.extract import cargar_csv, join_verificado
 
 
 def test_cargar_csv_retorna_dataframe(tmp_path):
@@ -46,3 +46,78 @@ def test_cargar_csv_archivo_vacio(tmp_path):
 
     with pytest.raises(ValueError, match="no contiene filas"):
         cargar_csv(str(archivo))
+
+
+def test_join_verificado_retorna_dataframe_correcto():
+    """Un join sin duplicados conserva las filas de la tabla izquierda."""
+    left = pd.DataFrame(
+        {
+            "id": [1, 2, 3],
+            "valor": ["a", "b", "c"],
+        }
+    )
+
+    right = pd.DataFrame(
+        {
+            "id": [1, 2, 3],
+            "extra": ["x", "y", "z"],
+        }
+    )
+
+    resultado = join_verificado(left, right, on="id")
+
+    assert isinstance(resultado, pd.DataFrame)
+    assert len(resultado) == 3
+    assert "extra" in resultado.columns
+
+
+def test_join_verificado_falla_con_duplicados():
+    """Duplicados en la clave derecha deben producir un error."""
+    left = pd.DataFrame(
+        {
+            "id": [1, 2],
+            "valor": ["a", "b"],
+        }
+    )
+
+    right = pd.DataFrame(
+        {
+            "id": [1, 1, 2],
+            "extra": ["x", "y", "z"],
+        }
+    )
+
+    with pytest.raises(AssertionError, match="filas"):
+        join_verificado(
+            left,
+            right,
+            on="id",
+            nombre="test_dup",
+        )
+
+
+def test_join_verificado_left_join_no_pierde_filas():
+    """Un left join mantiene las filas sin coincidencia."""
+    left = pd.DataFrame(
+        {
+            "id": [1, 2, 3],
+            "valor": ["a", "b", "c"],
+        }
+    )
+
+    right = pd.DataFrame(
+        {
+            "id": [1, 2],
+            "extra": ["x", "y"],
+        }
+    )
+
+    resultado = join_verificado(left, right, on="id")
+
+    assert len(resultado) == 3
+    assert pd.isna(
+        resultado.loc[
+            resultado["id"] == 3,
+            "extra",
+        ].values[0]
+    )
