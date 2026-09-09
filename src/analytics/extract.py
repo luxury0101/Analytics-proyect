@@ -122,7 +122,9 @@ def construir_dataset_base(
         tablas: Diccionario retornado por cargar_olist.
 
     Returns:
-        DataFrame analítico con una fila por pedido.
+        DataFrame analítico con una fila por pedido. Incluye precio_total y
+        flete_total para Lab 03, y conserva ticket_total, total_pago y n_cuotas
+        del Lab 02. Con los CSV originales tiene 18 columnas.
     """
     pagos_agrupados = (
         tablas["payments"]
@@ -139,8 +141,11 @@ def construir_dataset_base(
         .agg(
             n_items=("order_item_id", "count"),
             ticket_total=("price", "sum"),
+            flete_total=("freight_value", "sum"),
         )
     )
+    # Alias compatible: no eliminar el nombre utilizado en Lab 02.
+    items_agrupados["precio_total"] = items_agrupados["ticket_total"]
 
     dataset = join_verificado(
         tablas["orders"],

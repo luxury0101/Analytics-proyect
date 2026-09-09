@@ -1,0 +1,247 @@
+{
+  "fuente": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "versiones": {
+    "python": "3.12.14",
+    "pandas": "3.0.3"
+  },
+  "sha256_csv": {
+    "olist_orders_dataset.csv": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf",
+    "olist_customers_dataset.csv": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2",
+    "olist_order_items_dataset.csv": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279",
+    "olist_order_payments_dataset.csv": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0",
+    "olist_order_reviews_dataset.csv": "012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7"
+  },
+  "tablas": {
+    "orders": [
+      99441,
+      8
+    ],
+    "items": [
+      112650,
+      7
+    ],
+    "customers": [
+      99441,
+      5
+    ],
+    "payments": [
+      103886,
+      5
+    ],
+    "reviews": [
+      99224,
+      7
+    ]
+  },
+  "shape_base": [
+    99441,
+    18
+  ],
+  "shape_transformado": [
+    99441,
+    26
+  ],
+  "shape_base_enunciado": [
+    99441,
+    15
+  ],
+  "shape_transformado_enunciado": [
+    99441,
+    23
+  ],
+  "columnas_nuevas": [
+    "tiempo_entrega_dias",
+    "retraso_entrega_dias",
+    "entregado_tarde",
+    "dia_semana_compra",
+    "es_fin_de_semana",
+    "mes_compra",
+    "customer_state_freq",
+    "ticket_promedio_historico"
+  ],
+  "historial": {
+    "customer_id": {
+      "n_clientes": 99441,
+      "n_clientes_un_pedido": 99441,
+      "n_clientes_recurrentes": 0,
+      "pct_clientes_recurrentes": 0.0,
+      "n_filas_sin_historial": 99441,
+      "pct_filas_sin_historial": 100.0,
+      "n_filas_con_historial": 0,
+      "n_filas_primer_instante": 99441,
+      "n_filas_nulas_fuera_del_primer_instante": 0
+    },
+    "customer_unique_id": {
+      "n_clientes": 96096,
+      "n_clientes_un_pedido": 93099,
+      "n_clientes_recurrentes": 2997,
+      "pct_clientes_recurrentes": 3.1187562437562435,
+      "n_filas_sin_historial": 96412,
+      "pct_filas_sin_historial": 96.95397270743456,
+      "n_filas_con_historial": 3029,
+      "n_filas_primer_instante": 96374,
+      "n_filas_nulas_fuera_del_primer_instante": 38
+    }
+  },
+  "encoding_estado": {
+    "n_estados": 27,
+    "n_dummies_sin_drop_first": 27,
+    "n_dummies_con_drop_first": 26,
+    "n_columnas_dataframe_sin_drop_first": 52,
+    "n_columnas_dataframe_con_drop_first": 51
+  },
+  "perfil_tiempo_entrega": {
+    "columna": "tiempo_entrega_dias",
+    "tipo": "float64",
+    "n_total": 99441,
+    "n_nulos": 2965,
+    "pct_nulos": 2.98,
+    "n_unicos": 93809,
+    "media": 12.56,
+    "mediana": 10.22,
+    "std": 9.55,
+    "min": 0.5334143519,
+    "max": 209.6286111111
+  },
+  "descripcion_tiempo_entrega": {
+    "count": 96476.0,
+    "mean": 12.558702304,
+    "std": 9.5465298741,
+    "min": 0.5334143519,
+    "25%": 6.7664033565,
+    "50%": 10.2177546296,
+    "75%": 15.7203269676,
+    "max": 209.6286111111
+  },
+  "correlacion": {
+    "tiempo_entrega_dias": {
+      "tiempo_entrega_dias": 1.0,
+      "n_items": -0.019112871249052133,
+      "precio_total": 0.05557752202401579
+    },
+    "n_items": {
+      "tiempo_entrega_dias": -0.019112871249052133,
+      "n_items": 1.0,
+      "precio_total": 0.15306311978294873
+    },
+    "precio_total": {
+      "tiempo_entrega_dias": 0.05557752202401579,
+      "n_items": 0.15306311978294873,
+      "precio_total": 1.0
+    }
+  },
+  "n_observaciones_por_correlacion": {
+    "n_items": 96476,
+    "precio_total": 96476
+  },
+  "distribucion_estados": {
+    "SP": {
+      "conteo": 41746,
+      "porcentaje": 41.98
+    },
+    "RJ": {
+      "conteo": 12852,
+      "porcentaje": 12.92
+    },
+    "MG": {
+      "conteo": 11635,
+      "porcentaje": 11.7
+    },
+    "RS": {
+      "conteo": 5466,
+      "porcentaje": 5.5
+    },
+    "PR": {
+      "conteo": 5045,
+      "porcentaje": 5.07
+    },
+    "SC": {
+      "conteo": 3637,
+      "porcentaje": 3.66
+    },
+    "BA": {
+      "conteo": 3380,
+      "porcentaje": 3.4
+    },
+    "DF": {
+      "conteo": 2140,
+      "porcentaje": 2.15
+    },
+    "ES": {
+      "conteo": 2033,
+      "porcentaje": 2.04
+    },
+    "GO": {
+      "conteo": 2020,
+      "porcentaje": 2.03
+    },
+    "PE": {
+      "conteo": 1652,
+      "porcentaje": 1.66
+    },
+    "CE": {
+      "conteo": 1336,
+      "porcentaje": 1.34
+    },
+    "PA": {
+      "conteo": 975,
+      "porcentaje": 0.98
+    },
+    "MT": {
+      "conteo": 907,
+      "porcentaje": 0.91
+    },
+    "MA": {
+      "conteo": 747,
+      "porcentaje": 0.75
+    },
+    "MS": {
+      "conteo": 715,
+      "porcentaje": 0.72
+    },
+    "PB": {
+      "conteo": 536,
+      "porcentaje": 0.54
+    },
+    "PI": {
+      "conteo": 495,
+      "porcentaje": 0.5
+    },
+    "RN": {
+      "conteo": 485,
+      "porcentaje": 0.49
+    },
+    "AL": {
+      "conteo": 413,
+      "porcentaje": 0.42
+    },
+    "SE": {
+      "conteo": 350,
+      "porcentaje": 0.35
+    },
+    "TO": {
+      "conteo": 280,
+      "porcentaje": 0.28
+    },
+    "RO": {
+      "conteo": 253,
+      "porcentaje": 0.25
+    },
+    "AM": {
+      "conteo": 148,
+      "porcentaje": 0.15
+    },
+    "AC": {
+      "conteo": 81,
+      "porcentaje": 0.08
+    },
+    "AP": {
+      "conteo": 68,
+      "porcentaje": 0.07
+    },
+    "RR": {
+      "conteo": 46,
+      "porcentaje": 0.05
+    }
+  }
+}

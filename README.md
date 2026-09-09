@@ -1,3 +1,53 @@
+# Proyecto de Analítica de Datos - Olist
+
+[![CI](https://github.com/luxury0101/Analytics-proyect/actions/workflows/ci.yml/badge.svg)](https://github.com/luxury0101/Analytics-proyect/actions/workflows/ci.yml)
+
+Laboratorios 01, 02 y 03: ingesta, calidad, transformación y análisis exploratorio
+con Python 3.12, pandas, Pandera, pytest y Ruff.
+
+## Ejecutar el proyecto
+
+Desde la raíz del repositorio, con [uv](https://docs.astral.sh/uv/) instalado:
+
+```bash
+uv sync --all-groups --locked
+uv run pytest -v
+uv run ruff check .
+uv run ruff format --check .
+```
+
+Resultado del Lab 03: **61 tests pasan**, incluidos los 41 obligatorios del PDF.
+Las pruebas usan datos sintéticos y no requieren descargar Olist.
+
+## Laboratorio 03 - Transformación y EDA
+
+- [Implementación, decisiones y respuestas de reflexión](docs/lab03.md).
+- [Resultados calculados con Olist y huellas de los archivos](docs/lab03_resultados.json).
+- [Funciones de transformación](src/analytics/transform.py).
+- [Funciones de EDA](src/analytics/eda.py).
+- Extensiones opcionales: categorías raras y detección de posible fuga.
+
+Para reproducir el análisis real, descargar y extraer el
+[dataset oficial de Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+en `data/raw/`. Se necesitan estos cinco archivos, conservando sus nombres:
+
+```text
+olist_orders_dataset.csv
+olist_customers_dataset.csv
+olist_order_items_dataset.csv
+olist_order_payments_dataset.csv
+olist_order_reviews_dataset.csv
+```
+
+```bash
+uv run python scripts/verificar_lab03.py
+```
+
+El comando regenera `docs/lab03_resultados.json`. Los CSV reales están excluidos
+de Git. La tabla conserva las tres columnas de compatibilidad del Lab 02, por lo
+que tiene 18 columnas antes y 26 después de transformar. El script verifica
+también la proyección exacta del PDF: **99.441 × 15 -> 99.441 × 23**.
+
 ## Laboratorio 01
 
 Configuración inicial del proyecto, entorno reproducible, pruebas automatizadas,

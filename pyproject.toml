@@ -29,3 +29,7 @@ addopts = "-ra"
 [tool.ruff]
 target-version = "py312"
 line-length = 88
+
+[tool.ruff.lint.per-file-ignores]
+# El PDF exige conservar sus comparaciones explícitas con True/False.
+"tests/test_transform.py" = ["E712"]
