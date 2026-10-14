@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/luxury0101/Analytics-proyect/actions/workflows/ci.yml/badge.svg)](https://github.com/luxury0101/Analytics-proyect/actions/workflows/ci.yml)
 
-Laboratorios 01, 02 y 03: ingesta, calidad, transformación y análisis exploratorio
-con Python 3.12, pandas, Pandera, pytest y Ruff.
+Laboratorios 01 a 04: ingesta, calidad, transformación, análisis exploratorio y
+modelado supervisado con Python 3.12, pandas, Pandera, scikit-learn, pytest y Ruff.
 
 ## Ejecutar el proyecto
 
@@ -16,7 +16,7 @@ uv run ruff check .
 uv run ruff format --check .
 ```
 
-Resultado del Lab 03: **61 tests pasan**, incluidos los 41 obligatorios del PDF.
+Resultado del Lab 04: **74 tests pasan**, incluidos los 54 obligatorios del PDF.
 Las pruebas usan datos sintéticos y no requieren descargar Olist.
 
 ## Laboratorio 03 - Transformación y EDA
@@ -47,6 +47,14 @@ El comando regenera `docs/lab03_resultados.json`. Los CSV reales están excluido
 de Git. La tabla conserva las tres columnas de compatibilidad del Lab 02, por lo
 que tiene 18 columnas antes y 26 después de transformar. El script verifica
 también la proyección exacta del PDF: **99.441 × 15 -> 99.441 × 23**.
+
+## Laboratorio 04 - Modelado supervisado
+
+- [Implementación, decisiones y análisis](docs/lab04.md).
+- [Pipelines y serialización](src/analytics/train.py).
+- [Métricas y comparación contra baseline](src/analytics/evaluate.py).
+- [Resultados con Olist](docs/lab04_resultados.json), generados con
+  `uv run python scripts/verificar_lab04.py`; los pipelines quedan en `models/`.
 
 ## Laboratorio 01
 

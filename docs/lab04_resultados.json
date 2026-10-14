@@ -1,0 +1,91 @@
+{
+  "versiones": {
+    "python": "3.12.13",
+    "scikit_learn": "1.9.1",
+    "pandas": "3.0.3"
+  },
+  "definicion_review_negativa": "review_score <= 2",
+  "regresion": {
+    "n_filas": {
+      "train": 57885,
+      "val": 19295,
+      "test": 19296
+    },
+    "validacion": {
+      "rmse": 8.138213180689737,
+      "mae": 5.089932986730972,
+      "r2": 0.27577714017556787
+    },
+    "test": {
+      "rmse": 8.170889753857496,
+      "mae": 4.964602572874416,
+      "r2": 0.2778473744388592
+    },
+    "baseline_media_test": {
+      "rmse": 9.615205484193787,
+      "mae": 6.4034044721086865,
+      "r2": -1.7114621355673876e-05
+    }
+  },
+  "clasificacion": {
+    "n_filas": {
+      "train": 59203,
+      "val": 19735,
+      "test": 19735
+    },
+    "prevalencia_review_negativa_train": 0.14690133945914902,
+    "baseline_validacion": {
+      "accuracy_baseline": 0.8531036230048138,
+      "accuracy_modelo": 0.831416265518115,
+      "mejora": -0.02168735748669881
+    },
+    "validacion_balanced": {
+      "accuracy": 0.831416265518115,
+      "f1": 0.5017223303878987,
+      "roc_auc": 0.7704207692070024,
+      "matriz_confusion": [
+        [
+          14733,
+          2103
+        ],
+        [
+          1224,
+          1675
+        ]
+      ],
+      "recall_negativa": 0.5777854432562953
+    },
+    "test_balanced": {
+      "accuracy": 0.8344058778819357,
+      "f1": 0.5081276339554486,
+      "roc_auc": 0.7742515688756767,
+      "matriz_confusion": [
+        [
+          14779,
+          2057
+        ],
+        [
+          1211,
+          1688
+        ]
+      ],
+      "recall_negativa": 0.5822697481890307
+    },
+    "validacion_sin_class_weight": {
+      "accuracy": 0.8734735241955915,
+      "f1": 0.359250705671029,
+      "roc_auc": 0.7711954339700298,
+      "matriz_confusion": [
+        [
+          16538,
+          298
+        ],
+        [
+          2199,
+          700
+        ]
+      ],
+      "recall_negativa": 0.24146257330113832
+    }
+  }
+}
